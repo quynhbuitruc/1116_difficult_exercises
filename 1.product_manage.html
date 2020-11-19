@@ -60,7 +60,20 @@
             count++
         }
 
+        function editProduct() {
+            let content = document.getElementById("content").value
+            let editedContent = prompt("Nhập lại nội dung")
+            productList[0] = editedContent
+            drawTable()
+        }
 
+        function drawTable(editedContent) {
+            table.innerHTML = tableHead
+            for (let i = 0; i < productList.length; i++) {
+                table.innerHTML += "\n <td id='content'>" + productList[i] + "</td>" + editButton + deleteButton
+            }
+            document.getElementById("sum").innerHTML = productList.length + " sản phẩm"
+        }
     </script>
 </body>
 
