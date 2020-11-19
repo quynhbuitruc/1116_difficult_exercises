@@ -45,8 +45,6 @@
     <script>
         let productList = []
         let count = 0
-        let editButton = "<td style='text-align: center; width: 100px;'> <button onclick='editProduct()'> Edit </button> </td>"
-        let deleteButton = "<td style='text-align: center; width: 100px;'> <button onclick='deleteProduct()'> Delete </button> </td> \n"
         let table = document.getElementById("productList")
         let tableHead =
             "<tr> <td colspan='2' style='font-size: 16px; font: bold;'> Tên sản phẩm </td> <td id='sum' style='text-align: center; color: rgb(170, 49, 49);'> 0 sản phẩm </td> </tr>"
@@ -54,22 +52,23 @@
         function addProduct() {
             let product = document.getElementById("newProduct").value
             productList[count] = product
-            table.innerHTML += "\n <td id='content'>" + product + "</td>" + editButton + deleteButton
-            document.getElementById("sum").innerHTML = productList.length + " sản phẩm"
+            drawTable()
             document.getElementById("newProduct").value = ""
             count++
         }
 
-        function editProduct() {
+        function editProduct(index) {
             let content = document.getElementById("content").value
             let editedContent = prompt("Nhập lại nội dung")
-            productList[0] = editedContent
+            productList[index] = editedContent
             drawTable()
         }
 
-        function drawTable(editedContent) {
+        function drawTable() {
             table.innerHTML = tableHead
             for (let i = 0; i < productList.length; i++) {
+                let editButton = "<td style='text-align: center; width: 100px;'> <button onclick='editProduct(" + `${i}` + ")'> Edit </button> </td>"
+                let deleteButton = "<td style='text-align: center; width: 100px;'> <button onclick='deleteProduct(" + `${i}` + ")'> Delete </button> </td> \n"
                 table.innerHTML += "\n <td id='content'>" + productList[i] + "</td>" + editButton + deleteButton
             }
             document.getElementById("sum").innerHTML = productList.length + " sản phẩm"
