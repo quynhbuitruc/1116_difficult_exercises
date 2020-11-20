@@ -16,7 +16,7 @@
     </p>
     <p id="result"></p>
     <script>
-        let isPalidrome
+        let isPalidrome = true
 
         function checkPalindrome() {
             let input = document.getElementById("content").value
@@ -26,10 +26,13 @@
                     isPalidrome = false
                 }
             }
-            if (isPalidrome == false) {
-                document.getElementById("result").innerHTML = `${input} is NOT a palindrome`
-            } else {
+            if (isPalidrome == true) {
                 document.getElementById("result").innerHTML = `${input} is a PALIDROME`
+                document.getElementById("content").value = ""
+            } else {
+                document.getElementById("result").innerHTML = `${input} is NOT a palindrome`
+                document.getElementById("content").value = ""
+                isPalidrome = true
             }
         }
     </script>
