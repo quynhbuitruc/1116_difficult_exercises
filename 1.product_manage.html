@@ -64,6 +64,17 @@
             drawTable()
         }
 
+        function deleteProduct(index) {
+            let ask = confirm("Bạn thật sự muốn xóa sản phẩm này?")
+            if (ask == true) {
+                let content = productList.splice(index,1)
+                drawTable()
+                count = productList.length
+            }
+
+
+        }
+
         function drawTable() {
             table.innerHTML = tableHead
             for (let i = 0; i < productList.length; i++) {
